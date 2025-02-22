@@ -1,0 +1,9 @@
+@use './base/globals';
+@use './base/reset';
+@use './base/typography';
+
+@use './themes/variables';
+//components
+@use './components/product-card';
+@use './components/products-list';
+

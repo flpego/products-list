@@ -1,0 +1,28 @@
+// Layout
+
+$mobile-width: 375px;
+$desktop-width: 1440px;
+
+// Colors
+$red: hsl(14, 86%, 42%);
+$green: hsl(159, 69%, 38%);
+
+$rose-50: hsl(20, 50%, 98%);
+$rose-100: hsl(13, 31%, 94%);
+$rose-300: hsl(14, 25%, 72%);
+$rose-400: hsl(7, 20%, 60%);
+$rose-500: hsl(12, 20%, 44%);
+$rose-900: hsl(14, 65%, 9%);
+
+// Typography
+// Font Families
+$font-bold: "Red Hat Bold", sans-serif;
+$font-regular: "Red Hat Regular", sans-serif;
+$font-semibold: "Red Hat Semibold", sans-serif;
+$font-italic: "Red Hat Italic", sans-serif;
+$font-variable: "Red Hat Var", sans-serif;
+
+$font-size-product: 16px;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;

@@ -1,0 +1,112 @@
+@use "../themes/variables" as v;
+.product-card {
+    background: v.$rose-50;
+}
+
+.product-card {
+    position: relative;
+    width: 250px;;
+    height: 370px;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    padding-bottom: 1rem;
+    font-family: v.$font-regular;
+
+    .product-image {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        overflow: hidden;
+        border-radius: 12px;
+    }
+
+    .border-card-image{
+        border: 2px solid v.$red;
+    }
+
+    .product-content {
+        padding-top: 2.1rem;
+    }
+
+    .product-category {
+        font-size: 15px;
+        color: v.$rose-500;
+        padding: 5px 0;
+    }
+
+    .product-name {
+        font-size: 18px;
+        font-weight: 600;
+        font-family: v.$font-semibold;
+        padding-bottom: 8px;
+    }
+
+    .product-price {
+        font-size: 16px;
+        font-weight: bold;
+        color: v.$red;
+    }
+
+    .product-footer {
+        position: absolute;
+        width: 70%;
+        bottom: 112px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.buy-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    .add-to-cart {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border: 1px solid v.$rose-400;
+        border-radius: 20px;
+        padding: 10px 24px;
+        font-family: v.$font-regular;
+        font-size: 14px;
+        font-weight: 600;
+        color: v.$rose-900;
+        cursor: pointer;
+        p{
+            margin-left: 8px;
+        }
+    }
+
+    .quantity-controls {
+        width: 75%;
+        display: flex;
+        padding: 10px 24px;
+        justify-content: space-between;
+        align-items: center;
+        background:v.$red;
+        color: white;
+        border-radius: 20px;
+        padding: 4px 10px;
+        gap: 10px;
+        height: 42px;
+        button {
+            background: transparent;
+            border: 1px solid v.$rose-50;
+            border-radius: 100px;
+            cursor: pointer;
+            display: flex;
+            padding: 4px;
+            min-height: 20px;
+        }
+
+        span {
+            font-size: 16px;
+            font-weight: 500;
+        }
+    }
+}
