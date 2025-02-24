@@ -12,25 +12,30 @@ const BuyButton = ({ showQuantity, setShowQuantity, product }) => {
 
     // Alternar entre "Add to Cart" y controles de cantidad
     const toggleCart = () => {
-        console.log(product)
         setShowQuantity(true);
-        addToCart(product, quantity)
+        setQuantity(1);
+        addToCart(product, 1)
     };
 
     // Incrementar cantidad
     const incrementQuantity = () => {
-        setQuantity(prevQuantity => prevQuantity + 1);
-        addToCart(product, quantity)
+        const newQuantity = quantity + 1;
+        setQuantity(newQuantity);
+        setTimeout(() => addToCart(product, newQuantity), 0); //execute after to render
     };
 
-    // Decrementar cantidad 
     const decrementQuantity = () => {
-        if (quantity > 1) {
-            setQuantity(prevQuantity => prevQuantity - 1);
-        } else {
-            setShowQuantity(false); // Ocultar los controles si la cantidad es 0
+        const newQuantity = Math.max(0, quantity - 1);
+        setQuantity(newQuantity);
+        if (newQuantity === 0) {
+            setShowQuantity(false);
         }
+
+        setTimeout(() => addToCart(product, newQuantity), 0);
     };
+
+
+
 
     return (
 

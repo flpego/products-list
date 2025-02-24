@@ -1,62 +1,73 @@
-import { createContext,  useEffect,  useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { fetchProducts } from "../service/ProductService";
 
 const ProductContext = createContext();
 
- // eslint-disable-next-line react/prop-types
- function ProductContextProvider({children}){
-    
+// eslint-disable-next-line react/prop-types
+function ProductContextProvider({ children }) {
 
-    const [products, setProducts] = useState([])
-    const [cartProducts, setCartProducts] = useState([]);
-    
-    
-    //load products
-    useEffect(() => {
-        async function loadProducts(){
-            const products = await fetchProducts();
-            setProducts(products)
-            console.log(products)
-        };
-        
-      loadProducts();
-    }, []);
 
-    //cart functions
-    const addToCart = (product, quantity) => {
-      console.log(product.id)
-      setCartProducts((prevCartProducts) => {
-        // 1. Verificar si el producto ya está en el carrito
-        const existingProductIndex = prevCartProducts.findIndex(
-          (item) => item.product.id === product.id
-        );
-  
-        // 2. Si el producto ya existe, actualizar la cantidad
-        if (existingProductIndex !== -1) {
-          const updatedCart = [...prevCartProducts];
+  const [products, setProducts] = useState([])
+  const [cartProducts, setCartProducts] = useState([]);
+  const [quantityState, setQuantityState] = useState(0);
+
+  //load products
+  useEffect(() => {
+    async function loadProducts() {
+      const products = await fetchProducts();
+      setProducts(products)
+    };
+
+    loadProducts();
+  }, []);
+
+  //cart functions
+  const addToCart = (product, quantity) => {
+    setCartProducts((prevCartProducts) => {
+      // Buscar si el producto ya existe en el carrito
+      const existingProductIndex = prevCartProducts.findIndex(
+        (item) => item.product.id === product.id
+      );
+
+
+      if (existingProductIndex !== -1) {
+        const updatedCart = [...prevCartProducts];
+
+        if (quantity <= 0) {
+          updatedCart.splice(existingProductIndex, 1);
+
+        } else {
           updatedCart[existingProductIndex] = {
             ...updatedCart[existingProductIndex],
-            quantity: updatedCart[existingProductIndex].quantity + quantity,
+            quantity: quantity,
           };
-          return updatedCart;
-        }
-  
-        // 3. Si el producto no existe, agregarlo al carrito
-        return [...prevCartProducts, { product, quantity }];
-      });
-    };
-  
-    // Para depurar: ver cambios en el carrito cada vez que se actualiza
-    useEffect(() => {
-      console.log("Cart changed:", cartProducts);
-    }, [cartProducts]);
-    
 
-    return (
-        <ProductContext.Provider value={{ products, cartProducts ,addToCart }}>
-            {children}
-        </ProductContext.Provider>
-    );
+        }
+
+        return updatedCart;
+      }
+      if (quantity > 0) {
+        return [...prevCartProducts, { product, quantity }];
+      }
+
+      // Si el producto no existe, lo agregamos con su cantidad inicial
+      return [...prevCartProducts, { product, quantity }];
+    });
+  };
+
+
+  // Para depurar: ver cambios en el carrito cada vez que se actualiza
+  useEffect(() => {
+    const totalQuantity = cartProducts.reduce((sum, item) => sum + item.quantity, 0);
+    setQuantityState(totalQuantity);
+  }, [cartProducts]);
+
+
+  return (
+    <ProductContext.Provider value={{ products, cartProducts, addToCart, quantityState }}>
+      {children}
+    </ProductContext.Provider>
+  );
 }
 
 export { ProductContext, ProductContextProvider };

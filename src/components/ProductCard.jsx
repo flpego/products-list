@@ -5,7 +5,7 @@ const ProductCard = ({ name, id, price, image, category }) => {
 
     const [showQuantity, setShowQuantity] = useState(false);
     const product = { name, id, price, image, category }
-
+    
     return (
         <li key={id} className="product-card">
             <img

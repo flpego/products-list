@@ -4,6 +4,8 @@
 
 @use './themes/variables';
 //components
+@use './components/cartWithProducts';
+@use './components/emptyCard';
 @use './components/product-card';
 @use './components/products-list';
 
