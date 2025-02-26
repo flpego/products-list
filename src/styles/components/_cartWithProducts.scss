@@ -35,5 +35,20 @@
 .product-info-container{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 14px;
+}
+
+.product-info-container{
+    p {
+        color: v.$rose-500;
+    }
+    span {
+        font-weight: bold;
+        color: v.$rose-500;
+
+    }
+    .quantity {
+        color: v.$red;
+    }
 }

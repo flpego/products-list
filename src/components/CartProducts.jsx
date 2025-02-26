@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import DeleteIcon from "/src/assets/images/icon-remove-item.svg"
+import { DeleteIcon } from "../assets/icons/Icons";
 const CartProducts = ({ product, quantity }) => {
 
   if (quantity === 0) return null;
@@ -12,12 +12,12 @@ const CartProducts = ({ product, quantity }) => {
           <div className="product-info-container">
             <p className="quantity">{quantity}x</p>
             <p>@ ${product.price}</p>
-            <p>${product.price * quantity}</p>
+            <span>${product.price * quantity}</span>
           </div>
         </div>
         <div>
-          <button>
-            <img src={DeleteIcon} alt="Cart Icon" className="cart-icon" />
+          <button className="delete-buttons">
+            <DeleteIcon className="delete-icon"/>
           </button>
         </div>
 

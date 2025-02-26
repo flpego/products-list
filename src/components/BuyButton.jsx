@@ -1,9 +1,7 @@
 import { useContext, useState } from "react"
 import CartIcon from "/src/assets/images/icon-add-to-cart.svg"
-import IncrementIcon from "/src/assets/images/icon-increment-quantity.svg"
-import DecrementIcon from "/src/assets/images/icon-decrement-quantity.svg"
 import { ProductContext } from "../context/ProductContext"
-
+import { DecrementIcon, IncrementIcon } from "../assets/icons/Icons"
 
 // eslint-disable-next-line react/prop-types
 const BuyButton = ({ showQuantity, setShowQuantity, product }) => {
@@ -48,11 +46,11 @@ const BuyButton = ({ showQuantity, setShowQuantity, product }) => {
             ) : (
                 <div className="quantity-controls">
                     <button onClick={decrementQuantity}>
-                        <img src={DecrementIcon} alt="Decrement" />
+                        <DecrementIcon className="quantity-icons" />
                     </button>
                     <span>{quantity}</span>
                     <button onClick={incrementQuantity}>
-                        <img src={IncrementIcon} alt="Increment" />
+                        <IncrementIcon className="quantity-icons"/>
                     </button>
                 </div>
             )}
