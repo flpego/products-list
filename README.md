@@ -10,8 +10,8 @@ Thanks for checking out this front-end coding challenge.
 
 ## 🚀 Demo
 
-🔗 Live Site: [Add live site URL here](https://your-live-site-url.com)  
-🔗 Solution on Frontend Mentor: [Add solution URL here](https://your-solution-url.com)
+🔗 Live Site: [Live site URL here](https://products-list-with-react.netlify.app/)  
+🔗 Solution on Frontend Mentor: [Solution](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d)
 
 ## 🎯 Features
 
