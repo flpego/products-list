@@ -26,7 +26,7 @@ Thanks for checking out this front-end coding challenge.
 
 - **React** - Component-based UI
 - **Vite** - Fast development build
-- **CSS Modules / Styled Components** - Scoped styling
+- **CSS Modules / Sass Css** - Scoped styling
 - **Local JSON Data** - Simulating a backend response
 - **Flexbox & Grid** - Modern layout techniques
 
