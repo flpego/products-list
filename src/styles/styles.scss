@@ -5,8 +5,10 @@
 @use './themes/variables';
 //components
 @use './components/buy-button';
+@use './components/cart-total';
 @use './components/cartWithProducts';
 @use './components/emptyCard';
+@use './components/order-modal';
 @use './components/product-card';
 @use './components/products-list';
 

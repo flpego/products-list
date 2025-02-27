@@ -1,35 +1,36 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import CartIcon from "/src/assets/images/icon-add-to-cart.svg"
 import { ProductContext } from "../context/ProductContext"
 import { DecrementIcon, IncrementIcon } from "../assets/icons/Icons"
 
 // eslint-disable-next-line react/prop-types
 const BuyButton = ({ showQuantity, setShowQuantity, product }) => {
-    const { addToCart } = useContext(ProductContext)
-    const [quantity, setQuantity] = useState(1); // Estado para la cantidad
+    const { addToCart, cartProducts  } = useContext(ProductContext)
+   
+
+
+    const productInCart = cartProducts.find((item) => item.product.id === product.id);
+    const quantity = productInCart ? productInCart.quantity : 0;
 
     // Alternar entre "Add to Cart" y controles de cantidad
     const toggleCart = () => {
         setShowQuantity(true);
-        setQuantity(1);
         addToCart(product, 1)
     };
 
     // Incrementar cantidad
     const incrementQuantity = () => {
-        const newQuantity = quantity + 1;
-        setQuantity(newQuantity);
-        setTimeout(() => addToCart(product, newQuantity), 0); //execute after to render
+        addToCart(product, quantity + 1);
+         //execute after to render
     };
 
     const decrementQuantity = () => {
-        const newQuantity = Math.max(0, quantity - 1);
-        setQuantity(newQuantity);
-        if (newQuantity === 0) {
+        if (quantity > 1) {
+            addToCart(product, quantity - 1);
+        } else {
             setShowQuantity(false);
+            addToCart(product, 0); // Elimina el producto del carrito
         }
-
-        setTimeout(() => addToCart(product, newQuantity), 0);
     };
 
 

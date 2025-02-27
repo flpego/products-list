@@ -1,6 +1,6 @@
 @use "../themes/variables" as v;
 
-.product-list-container{
+.product-list-container {
     h2 {
         font-size: 2.5rem;
         font-family: v.$font-bold;
@@ -8,11 +8,23 @@
         margin-left: 5px;
     }
 }
-.products-list{
+.products-list {
     display: grid;
     justify-items: center;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
 }
 
-// 
+@media (max-width: 400px) {
+    .products-list {
+        grid-template-columns: 1fr;
+    }
+
+    .product-list-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        h2 {
+            margin-left: 20px;
+        }
+    }
+}

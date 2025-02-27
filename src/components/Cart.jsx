@@ -3,26 +3,32 @@ import { ProductContext } from "../context/ProductContext"
 import CartProducts from "./CartProducts"
 import { CartEmpty } from "./CartEmpty"
 import DinamicTitle from "./DinamicTitle"
+import CartTotal from "./CartTotal"
 
 const Cart = () => {
   const { cartProducts } = useContext(ProductContext)
-  console.log(cartProducts)
 
+  const isEmpty = cartProducts.length === 0;
+  
   return (
     <div className="cart-container">
       <DinamicTitle />
-      {cartProducts.length === 0 ? (<CartEmpty />) :
-        (cartProducts.map((cartItem) => (
+      {isEmpty ? (
+        <CartEmpty />
+      ) : (
+        <>
+          {cartProducts.map(({ product, quantity }) => (
+            <CartProducts
+              key={product.id}
+              product={product}
+              quantity={quantity}
+              className="cart-products-container"
+            />
+          ))}
+          <CartTotal />
+        </>
+      )}
 
-          <CartProducts
-            product={cartItem.product}
-            quantity={cartItem.quantity}
-            key={cartItem.product.id}
-            className="cart-products-container"
-          />
-          
-        )))
-      }
     </div>
   )
 }
