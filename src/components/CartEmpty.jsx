@@ -1,4 +1,4 @@
-import EmptyCartIcon from "../assets/images/illustration-empty-cart.svg"
+import EmptyCartIcon from "/images/illustration-empty-cart.svg"
 
 export const CartEmpty = () => {
   return (

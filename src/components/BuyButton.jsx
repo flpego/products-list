@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import CartIcon from "/src/assets/images/icon-add-to-cart.svg"
+import CartIcon from "/images/icon-add-to-cart.svg"
 import { ProductContext } from "../context/ProductContext"
 import { DecrementIcon, IncrementIcon } from "../assets/icons/Icons"
 
